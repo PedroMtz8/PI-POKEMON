@@ -20,7 +20,7 @@ let api = "http://localhost:3001"
 
 export function getAllPokemons(){
     return function(dispatch){
-        return axios.get(`${api}/pokemons`)
+        return axios.get(`/pokemons`)
                 .then(pokemons =>{
                     dispatch({
                         type: GET_ALL_POKEMONS,
@@ -36,7 +36,7 @@ export function getAllPokemons(){
 
 export function getDetails(id){
     return function(dispatch){
-        return axios.get(`${api}/pokemons/${id}`)
+        return axios.get(`/pokemons/${id}`)
                 .then(pokemons =>{
                     dispatch({
                         type: GET_POKEMONS_DETAILS,
@@ -64,11 +64,6 @@ export function getTypes(){
     }
 }
 
-/* async function getTypes2(){
-    let respuesta = await axios(`${api}/types`)
-    console.log(respuesta.data)
-}
-getTypes2() */
 
 export function emptyPokemons(){
     return function(dispatch){
@@ -142,7 +137,7 @@ export function apiOrCreated(payload){
 
 export function postPokemon(payload){
     return function(dispatch){
-        let newPokemon = axios.post(`${api}/pokemons`, payload)
+        let newPokemon = axios.post(`/pokemons`, payload)
                 dispatch({
                     type: POST_POKEMON,
                     payload
@@ -156,7 +151,7 @@ export function postPokemon(payload){
 export function deletePokemon(id){
     return async function(dispatch){
         try{
-            const deleted = await axios.delete(`${api}/pokemons/${id}`)
+            const deleted = await axios.delete(`/pokemons/${id}`)
             dispatch({
                 type: DELETE_POKEMON,
                 payload: deleted
