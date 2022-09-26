@@ -51,7 +51,7 @@ export function getDetails(id){
 
 export function getTypes(){
     return function(dispatch){
-        return axios.get(`${api}/types`)
+        return axios.get(`/types`)
                 .then(t =>{
                     dispatch({
                         type: GET_TYPES,
