@@ -120,7 +120,7 @@
 
 
 .range_label, .name{
-    margin: 5px 0px 5px 5px;
+    margin: 5px 0px 1px 5px;
     font-size: 20px;
     color: rgb(118, 124, 240);
     font-weight: 700;
@@ -129,8 +129,8 @@
 
 span{
     font-size: 13px;
-    font-weight: 100;
-    color: red;
+    font-weight: 300;
+    color: rgb(255, 0, 0);
     text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
              0px 4px 7px rgba(0,0,0,0.1),
              0px 12px 17px rgba(0,0,0,0.1);
@@ -141,7 +141,7 @@ span{
     height: 125px;
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: 5px;
     border: 2px solid black;
     background-color: darkslategrey;
 }

@@ -16,7 +16,7 @@ export default function LandingPage() {
             <h3 className='subtitle'>Developed by Pedro Martinez</h3>
             <div className='container_button'>
             <Link to = "/home">
-                <button className='button_landing'>vamos!</button>
+                <button className='button_landing'>Let's go!</button>
             </Link>
             </div>
             <div className='redes'>

@@ -35,6 +35,9 @@ export default function Create() {
     const [nameExist, setNameExist] = useState(true);
     const [validHeight, setValidHeight] = useState(true);
     const [validWeight, setValidWeight] = useState(true);
+    const [maxChar, setMaxChar] = useState(true)
+    const [minH, setMinH] = useState(true)
+    const [minW, setMinW] = useState(true)
 
 
     function handleChange(e) {
@@ -68,11 +71,13 @@ export default function Create() {
     function onSubmit(e) {
         validate()
         e.preventDefault()
-        if (!input.name) return alert("Can't create a Pokemon without a name")
+        if (!input.name || input.name.trim() === "" ) return alert("Can't create a Pokemon without a name")
         if (!types.length) return alert("Choose at least one type")
         let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
         if (nameExist) return alert("This pokemon already exists, you have to choose other name")
         if (!input.height || !input.weight) return alert("You have to add all the requirments")
+        if(input.weight < 1 || input.height < 1) return alert("Just positive values")
+        if(input.weight.length > 3 || input.height.length > 3) return alert("The Height or Weight is out of range, just 3 numbers")
         if (!input.image) input.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10099.png"
 
         input.types = types
@@ -98,15 +103,23 @@ export default function Create() {
         /*  let errors = {}; */
         let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
 
-        if (!input.name || typeof input.name !== "string") setValidName(false)
+        if (!input.name || typeof input.name !== "string" || input.name.trim() === "") setValidName(false)
         else setValidName(true)
+        if(input.name.length > 16) setMaxChar(false)
+        else setMaxChar(true)
         if (nameExist) setNameExist(false)
         else setNameExist(true)
+        if(input.height < 1) setMinH(false)
+        else setMinH(true)
+        if(input.weight < 1) setMinW(false)
+        else setMinW(true)
         if (!input.height) setValidHeight(false)
         else setValidHeight(true)
-        if (!input.weight) setValidWeight(false)
+        if (!input.weight ) setValidWeight(false)
         else setValidWeight(true)
+        
     }
+
 
     return (
         <div className='background_create'>
@@ -131,7 +144,7 @@ export default function Create() {
                             onKeyUp={e => validate()}
                             onBlur={e => validate()}
                         />
-                        <span>{!nameExist && "This pokemon already exist"}{!validName && "You need to add a name"}</span>
+                        <span>{!nameExist && "This pokemon already exist"}{!validName && "You need to add a name"}{!maxChar && "Can't add more than 15 characters"}</span>
                         <label className='range_label'>Life: {input.life} </label>
                         <input name="life" value={parseInt(input.life)} className='range_input' type="range" min="0" max="150"
                             onChange={(e) => {
@@ -153,23 +166,27 @@ export default function Create() {
                                 handleChange(e)
                             }} />
                         <label className='range_label'>Height</label>
-                        <input className='input_text' name="height" value={input.height} type="number" min="1" placeholder='Height in meters'
+                        <input className='input_text' name="height"  value={input.height} type="number" min="1" placeholder='Height in centimeters'
                             onChange={(e) => {
                                 handleChange(e)
                             }}
                             onKeyUp={e => validate()}
                             onBlur={e => validate()}
+                            
                         />
                         <span>{!validHeight && "You need to add Height"}</span>
+                        <span>{!minH && "Just positive values"}</span>
                         <label className='range_label'>Weight</label>
-                        <input className='input_text' name="weight" value={input.weight} type="number" placeholder='Weight in meters'
+                        <input className='input_text' name="weight" min="1" value={input.weight} type="number" placeholder='Weight in kg'
                             onChange={(e) => {
                                 handleChange(e)
                             }}
                             onKeyUp={e => validate()}
                             onBlur={e => validate()}
+                            
                         />
                         <span>{!validWeight && "You need to add Weight"}</span>
+                        <span>{!minW && "Just positive values"}</span>
                         <label className='name'>Image</label>
                         <input className='input_text' name="image" value={input.image} type="text" placeholder='Add an image link'
                             onChange={(e) => {

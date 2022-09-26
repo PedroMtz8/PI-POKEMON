@@ -21,6 +21,7 @@ export default function CardDetail() {
     let id = pokemonId.id
 
     let detail = useSelector(state => state.pokemonDetail)
+    console.log(detail)
 
     /* let poke = useSelector(state => state.showPokemons)
    
@@ -79,7 +80,9 @@ export default function CardDetail() {
                                     <p><img className='icon' src={attack} alt="Not found" /> Attack: {detail[0].attack}</p>
                                     <p><img className='icon' src={defense} alt="Not found" /> Defense: {detail[0].defense}</p>
                                     <p><img className='icon' src={speed} alt="Not found" /> Speed: {detail[0].speed}</p>
-                                    <p><img className='icon' src={height} alt="Not found" /> Height: {detail[0].height}</p>
+                                    <p><img className='icon' src={height} alt="Not found" /> Height: {                 
+                                        detail[0].created ? (detail[0].height / 100) + " m" : detail[0].height                  
+                                    }</p>
                                     <p><img className='icon' src={weight} alt="Not found" /> Weight: {detail[0].weight}</p>
 
 

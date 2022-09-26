@@ -37,13 +37,16 @@
 
 @media (max-width: 450px){
     .background-home{
-        height: 100%;
+        height: 3800px;
         background-image: linear-gradient(to bottom right, #00C0FF, #4218B8);
     }
     .pag-container2{
         visibility: visible;
         padding-bottom: 20px;
-        
+        position: absolute;
+        right: 0;
+        left: 0;
+        bottom: -3040px;
     }
 
     .pag-container{

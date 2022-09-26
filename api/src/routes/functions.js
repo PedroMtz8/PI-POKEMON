@@ -29,8 +29,8 @@ const getApiInfo = async () => {
                 speed: pokemon.stats[5].base_stat,
                 image: pokemon.sprites.other.dream_world.front_default,
                 image2: pokemon.sprites.other["official-artwork"].front_default,
-                height: pokemon.height,
-                weight: pokemon.weight,
+                height: (pokemon.height / 10) + " m",
+                weight: (pokemon.weight / 10) + " kg",
                 types: pokemon.types.map(t => { return { name: t.type.name } })
             }
             return objPokemon;
