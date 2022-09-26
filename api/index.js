@@ -23,7 +23,7 @@ const { getTypes } = require('./src/routes/functions.js');
 
 // Syncing all the models at once.
 conn.sync({ force: false }).then(() => {
-  server.listen(3001, () => {
+  server.listen(process.env.PORT, () => {
     console.log('Listening at 3001'); // eslint-disable-line no-console
   });
   getTypes();
