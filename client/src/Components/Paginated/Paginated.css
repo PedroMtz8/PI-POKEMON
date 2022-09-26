@@ -1,0 +1,18 @@
+.botones{
+    display: flex;
+    justify-content: center;
+
+}
+
+.button_paginate{
+    margin: 0px 5px 0px 5px;
+    border: none;
+    font-size: 12px;
+    display: none;
+}
+
+.anterior, .siguiente{
+    margin: 0px 5px 0px 5px;
+    font-size: 12px;
+}
+

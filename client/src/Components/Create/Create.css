@@ -1,0 +1,192 @@
+.background_create{
+    height: 100vh;
+    background-image: linear-gradient(180deg, #0000008c 20%, #0000008c 100%), url("../../img/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top ;
+}
+
+.title_submit{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    
+}
+
+.create{
+    color: cornflowerblue;
+    font-size: 30px;
+    text-shadow: -2px 0 #000, 0 2px #000, 2px 0 #000, 0 -2px #000;
+}
+
+.buttom_home {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(49, 183, 183);
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: background .5s;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    padding: 10px 32px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.buttom_home:hover{
+    background-color: rgb(31, 72, 206);
+    color: white;
+    border: 2px solid rgb(29, 14, 14)
+}
+
+.button_create{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(49, 183, 183);
+    border: 2px solid black;
+    border-radius: 10px;
+    transition: background .5s;
+    display: inline-block;
+    color: rgb(0, 0, 0);
+    padding: 10px 32px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.button_create:hover{
+    background-color: rgb(31, 72, 206);
+    color: white;
+    border: 2px solid rgb(29, 14, 14)
+}
+
+
+.createPokemon{
+    display: flex;
+    /* padding: 30px; */
+    border-radius: 20px;
+    justify-content: center;
+    
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.all_types{
+    display: grid;    
+    grid-template-columns: repeat(2, 60px);
+    height: 250px;
+    justify-content: center;
+    margin-top: 70px;
+    gap: 10px
+}
+
+.type_buttom{
+    height: 25px;
+    border-radius: 5px;
+    background-color: aqua;
+}
+
+
+
+.type_buttom:hover{
+    cursor: pointer;
+}
+
+
+.press{
+    height: 25px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.press:hover{
+    cursor: pointer;
+}
+
+.input_text{
+    height: 25px;
+    border-radius: 5px;
+}
+
+.conteiner_form{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.range_label, .name{
+    margin: 5px 0px 5px 5px;
+    font-size: 20px;
+    color: rgb(118, 124, 240);
+    font-weight: 700;
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+span{
+    font-size: 13px;
+    font-weight: 100;
+    color: red;
+    text-shadow: 0px 2px 3px rgba(0,0,0,0.4),
+             0px 4px 7px rgba(0,0,0,0.1),
+             0px 12px 17px rgba(0,0,0,0.1);
+             text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
+
+.img{
+    height: 125px;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    border: 2px solid black;
+    background-color: darkslategrey;
+}
+
+.image_input{
+    
+    width: 120px;
+    
+}
+
+
+  
+  
+
+@media (max-width: 450px){
+    .background_create{
+        height: 100%;
+        background-image: linear-gradient(to bottom right, #3590ae, #463574);
+    }
+
+    .all_types{
+        grid-template-columns: repeat(4, 60px);
+    }
+
+    .input_text{
+        height: 35px;
+        border-radius: 5px;
+    }
+    
+    .type_buttom, .press{
+        height: 35px;
+    }
+
+    .title_submit{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .conteiner_form{
+        flex-wrap: wrap;
+    }
+
+    .all_types{
+        margin-bottom: 40px;
+    }
+
+    
+}

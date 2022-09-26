@@ -1,0 +1,18 @@
+
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-left: 40px;
+    
+}
+
+
+@media (max-width: 450px){
+    .cards{
+        display: wrap;
+        grid-template-columns: repeat(1, 1fr);
+        align-items: center;
+        margin-right: 25px;
+    }
+}
