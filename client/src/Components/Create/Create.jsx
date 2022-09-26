@@ -73,6 +73,7 @@ export default function Create() {
         e.preventDefault()
         if (!input.name || input.name.trim() === "" ) return alert("Can't create a Pokemon without a name")
         if (!types.length) return alert("Choose at least one type")
+        if(input.name.length > 15) return alert("You can't add more than 15 characters")
         let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
         if (nameExist) return alert("This pokemon already exists, you have to choose other name")
         if (!input.height || !input.weight) return alert("You have to add all the requirments")
@@ -105,7 +106,7 @@ export default function Create() {
 
         if (!input.name || typeof input.name !== "string" || input.name.trim() === "") setValidName(false)
         else setValidName(true)
-        if(input.name.length > 16) setMaxChar(false)
+        if(input.name.length > 15) setMaxChar(false)
         else setMaxChar(true)
         if (nameExist) setNameExist(false)
         else setNameExist(true)

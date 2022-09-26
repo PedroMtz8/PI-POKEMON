@@ -83,7 +83,9 @@ export default function CardDetail() {
                                     <p><img className='icon' src={height} alt="Not found" /> Height: {                 
                                         detail[0].created ? (detail[0].height / 100) + " m" : detail[0].height                  
                                     }</p>
-                                    <p><img className='icon' src={weight} alt="Not found" /> Weight: {detail[0].weight}</p>
+                                    <p><img className='icon' src={weight} alt="Not found" /> Weight: {
+                                        detail[0].created ? detail[0].weight + " kg" : detail[0].weight 
+                                    }</p>
 
 
                                     <div className="type_container_detail">
