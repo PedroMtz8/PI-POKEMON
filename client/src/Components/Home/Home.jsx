@@ -41,14 +41,14 @@ export default function Home() {
     //console.log(indexOfFirst)
 
     const prev = () => {
-        if (currentPage > 1) return dispatch(setPage("down")) /* setCurrentPage( currentPage-1) */
+        if (currentPage > 1) return dispatch(setPage(currentPage - 1)) /* setCurrentPage( currentPage-1) */
     }
 
     let totalPaginas = Math.ceil(allPokemons.length / 12)
     //console.log(paginas)
 
     const next = () => {
-        if (currentPage !== totalPaginas) return dispatch(setPage("up")) /* setCurrentPage( currentPage + 1) */
+        if (currentPage !== totalPaginas) return dispatch(setPage(currentPage + 1)) /* setCurrentPage( currentPage + 1) */
     }
 
     // const siguiente = () => setCurrentPage(currentPage+1)

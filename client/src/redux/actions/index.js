@@ -15,7 +15,7 @@ export const SET_PAGE = "SET_PAGE"
 export const REFRESH = "REFRESH"
 export const EMPTY_DETAIL = "EMPTY_DETAIL"
 
-let api = "http://localhost:3001"
+/* let api = "http://localhost:3001" */
 
 
 export function getAllPokemons(){

@@ -21,7 +21,7 @@ export default function CardDetail() {
     let id = pokemonId.id
 
     let detail = useSelector(state => state.pokemonDetail)
-    console.log(detail)
+    //console.log(detail)
 
     /* let poke = useSelector(state => state.showPokemons)
    

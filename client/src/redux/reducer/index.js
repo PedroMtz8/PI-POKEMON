@@ -136,18 +136,6 @@ export default function rootReducer(state = initialState, action){
             }
 
         case SET_PAGE:
-                if(action.payload === 'up'){
-                 return{
-                  ...state,
-                  currentPage: Number(state.currentPage) + 1
-                 }
-                }
-                if(action.payload === 'down'){
-                  return{
-                    ...state,
-                    currentPage: Number(state.currentPage) - 1
-                  }
-                }   
             return {
                 ...state,
                 currentPage: action.payload
