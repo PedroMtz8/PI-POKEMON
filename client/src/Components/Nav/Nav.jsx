@@ -85,7 +85,7 @@ export default function Nav({ setOrder, types}) {
                     <input className='refresh' type="button" onClick={onRefresh} value="Refresh" />
                     <select className="selects"  onChange={e => handleApiOrCreated(e)}>
                             <option className="options " value="all" >All Pokemons</option>
-                            <option className="options " value="api" >Api</option>
+                            <option className="options " value="api" >Default Data</option>
                             <option className="options " value="created" >Created</option>
                         </select>
                         <select className="selects" defaultValue={'DEFAULT'} onChange={e => handleOrderAbc(e)}>
@@ -96,7 +96,13 @@ export default function Nav({ setOrder, types}) {
                         <select className="selects" onChange={e => handleTypes(e)}>
                             <option className="options" value="all">Type Filter</option>
                             {
-                                types.map(t => <option className="options" value={t.name} key={t.id} >{t.name}</option>)
+                                types.map((t, index) => {
+
+                                    let mayus = t.name[0].toUpperCase()
+                                    let Name = mayus + t.name.slice(1)
+                                    return <option className="options" value={Name} key={index} >{Name}</option>
+                                })
+                             
                             }
                             
                         </select>

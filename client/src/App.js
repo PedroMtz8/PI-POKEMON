@@ -4,6 +4,7 @@ import LandingPage from "./Components/LandingPage/LandingPage"
 import Home from "./Components/Home/Home"
 import Create from './Components/Create/Create';
 import CardDetail from './Components/CardDetail/CardDetail';
+import Update from './Components/UpdateCard/UpdateCard';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path='/'  element={<LandingPage/>}/>
         <Route path='/home'  element={<Home/>}/>
         <Route path='/pokemons/create'  element={<Create/>}/>
+        <Route path='/pokemon/update/:id'  element={<Update/>}/>
         <Route path="/pokemon/:id" element={<CardDetail/>}/>
     </Routes>
     

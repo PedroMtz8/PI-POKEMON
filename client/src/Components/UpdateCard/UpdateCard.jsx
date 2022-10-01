@@ -1,34 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
-import { emptyPokemons, getTypes, postPokemon, getAllPokemons } from '../../redux/actions';
-import "./Create.css"
+import { emptyPokemons, getTypes, updatePokemon, getAllPokemons, getDetails } from '../../redux/actions';
 
 
 
-export default function Create() {
+export default function Update() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const allTypes = useSelector(state => state.types)
     const allPokemons = useSelector(state => state.showPokemons)
+    const pokemonId = useParams();
+    let id = pokemonId.id
+
+    
+    const filter = allPokemons.filter(p => p.id === id)
+
+
+    const typesPoke = filter[0].types.map(p => p.name)
+    /* console.log(id) */
 
     useEffect(() => {
-        dispatch(getAllPokemons())
         dispatch(getTypes())
-    }, [dispatch])
+        if (allPokemons.length === 0) return dispatch(getAllPokemons())
+        dispatch(getDetails(id))
+    }, [dispatch, allPokemons.length])
 
-    const [types, setTypes] = useState([])
+    const [types, setTypes] = useState(typesPoke)
 
     const [input, setInput] = useState({
-        name: "",
-        life: 75,
-        attack: 75,
-        defense: 75,
-        speed: 75,
-        height: "",
-        weight: "",
+        name: filter[0].name,
+        life: filter[0].life,
+        attack: filter[0].attack,
+        defense: filter[0].defense,
+        speed: filter[0].speed,
+        height: filter[0].height,
+        weight: filter[0].weight,
         types: [],
-        image: ""
+        image: filter[0].image
     })
 
     const [validName, setValidName] = useState(true);
@@ -74,16 +83,17 @@ export default function Create() {
         if (!input.name || input.name.trim() === "" ) return alert("Can't create a Pokemon without a name")
         if (!types.length) return alert("Choose at least one type")
         if(input.name.length > 15) return alert("You can't add more than 15 characters")
-        let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
+        const differentsPokeName = allPokemons.filter(p => p.name !== filter[0].name)
+        const nameExist = differentsPokeName.map(p => p.name).includes(input.name.toLowerCase())
         if (nameExist) return alert("This pokemon already exists, you have to choose other name")
         if (!input.height || !input.weight) return alert("You have to add all the requirments")
         if(input.weight < 1 || input.height < 1) return alert("Just positive values")
         if(input.weight.length > 3 || input.height.length > 3) return alert("The Height or Weight is out of range, just 3 numbers")
-        if (!input.image) input.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10099.png"
+        
 
         input.types = types
-        dispatch(postPokemon(input))
-        setTimeout(alert("Pokemon created succesfully"), 2000)
+        dispatch(updatePokemon(input, id))
+        setTimeout(alert("Pokemon updated succesfully"), 2000)
         dispatch(emptyPokemons())
         setInput({
             name: "",
@@ -102,7 +112,8 @@ export default function Create() {
 
     function validate() {
         /*  let errors = {}; */
-        let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
+        const differentsPokeName = allPokemons.filter(p => p.name !== filter[0].name)
+        const nameExist = differentsPokeName.map(p => p.name).includes(input.name.toLowerCase())
 
         if (!input.name || typeof input.name !== "string" || input.name.trim() === "") setValidName(false)
         else setValidName(true)
@@ -125,11 +136,10 @@ export default function Create() {
     return (
         <div className='background_create'>
             <div className='title_submit'>
-                <Link to="/home">
-                    <button className='buttom_home'>Back To Home</button>
-                </Link>
+                    <button className='buttom_home' onClick={e => navigate(-1)}>Back</button>
+               
                 <div className='send'>
-                    <h2 className='create'>Creating Your Pokemon</h2>
+                    <h2 className='create'>Editing Your Pokemon</h2>
                 </div>
                 <button className='button_create' type='submit' onClick={e => onSubmit(e)}>Send</button>
             </div>
@@ -193,7 +203,6 @@ export default function Create() {
                             onChange={(e) => {
                                 handleChange(e)
                             }} />
-                            <h6 >Image Preview</h6>
                         <div className='img'>
                             <img className='image_input' src={input.image.length ? input.image : "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10099.png"} alt="Not Found" />
 

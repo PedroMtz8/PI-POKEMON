@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, useNavigate } from 'react-router-dom';
-import {  deletePokemon, setPage, getDetails, emptyDetail, emptyPokemons } from '../../redux/actions';
+import { useParams, useNavigate, Link } from 'react-router-dom';
+import {  deletePokemon, setPage, getDetails, emptyDetail, emptyPokemons, getAllPokemons } from '../../redux/actions';
 import "./CardDetail.css"
 import attack from "../../img/attack.png"
 import life from "../../img/life.png"
@@ -20,7 +20,8 @@ export default function CardDetail() {
     const pokemonId = useParams();
     let id = pokemonId.id
 
-    let detail = useSelector(state => state.pokemonDetail)
+    const detail = useSelector(state => state.pokemonDetail)
+    const allPokemons = useSelector(state => state.showPokemons)
     //console.log(detail)
 
     /* let poke = useSelector(state => state.showPokemons)
@@ -32,10 +33,10 @@ export default function CardDetail() {
 
     useEffect(() => {
         dispatch(emptyDetail())
-        /* dispatch(getAllPokemons()); */
+        if (allPokemons.length === 0) return dispatch(getAllPokemons())
         dispatch(getDetails(id))
 
-    }, [dispatch, id]);
+    }, [dispatch, allPokemons.length, id]);
 
     function handleDelete() {
         setConfirmbox(true)
@@ -99,7 +100,10 @@ export default function CardDetail() {
                                 </div>
                                 {
                                     detail[0].created ?
-                                        <button className='delete' onClick={e => handleDelete()}>Delete</button>
+                                        <div className='bottoms_update_delete' >
+                                                 <button className='delete' onClick={e => handleDelete()}>Delete</button>
+                                                 <Link to={`/pokemon/update/${id}`} ><button className='update' >Update</button></Link> 
+                                        </div>
                                         :
                                         null
                                 }

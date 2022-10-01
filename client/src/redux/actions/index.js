@@ -14,6 +14,7 @@ export const DELETE_POKEMON = "DELETE_POKEMON"
 export const SET_PAGE = "SET_PAGE"
 export const REFRESH = "REFRESH"
 export const EMPTY_DETAIL = "EMPTY_DETAIL"
+export const UPDATE_POKEMON = "UPDATE_POKEMON"
 
 /* let api = "http://localhost:3001" */
 
@@ -144,6 +145,19 @@ export function postPokemon(payload){
                 })
 
             return newPokemon
+    }
+}
+
+
+export function updatePokemon(payload, id){
+    return function(dispatch){
+        let updatePokemon = axios.put(`/pokemons/update/${id}`, payload)
+                dispatch({
+                    type: UPDATE_POKEMON,
+                    payload
+                })
+
+            return updatePokemon
     }
 }
 

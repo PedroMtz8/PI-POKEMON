@@ -1,4 +1,4 @@
-import { EMPTY_POKEMONS, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMONS_DETAILS, GET_TYPES, ORDER_BY_POWER, ORDER_POKEMONS, SEARCH_POKEMON, POST_POKEMON, API_OR_CREATED, DELETE_POKEMON, SET_PAGE, REFRESH, EMPTY_DETAIL } from "../actions/index.js";
+import { EMPTY_POKEMONS, FILTER_BY_TYPE, GET_ALL_POKEMONS, GET_POKEMONS_DETAILS, GET_TYPES, ORDER_BY_POWER, ORDER_POKEMONS, SEARCH_POKEMON, POST_POKEMON, API_OR_CREATED, DELETE_POKEMON, SET_PAGE, REFRESH, EMPTY_DETAIL, UPDATE_POKEMON } from "../actions/index.js";
 
 
 
@@ -101,7 +101,7 @@ export default function rootReducer(state = initialState, action){
         case SEARCH_POKEMON:
             let notFound = [{name: "not found"}]
             /* let pokemonFound = state.allPokemons.filter(p => p.name === action.payload.toLowerCase()) */
-            let incomplete = state.allPokemons.filter(p => p.name.includes(action.payload.toLowerCase()))
+            let incomplete = state.allPokemons.filter(p => p.name.toLowerCase().includes(action.payload.toLowerCase()))
             return{
                 ...state,
                 showPokemons: incomplete.length ? incomplete : notFound
@@ -109,6 +109,11 @@ export default function rootReducer(state = initialState, action){
             
 
         case POST_POKEMON:
+            return{
+                ...state
+            }
+
+        case UPDATE_POKEMON:
             return{
                 ...state
             }

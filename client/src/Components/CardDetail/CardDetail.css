@@ -89,11 +89,25 @@ p{
     border-radius: 5px;
     padding: 5px;
     color: white;
+    width: 80px;
+    justify-self: center;
     font-weight: 700;
     
 }
 
 
+.update{
+    margin-bottom: 10px;
+    background-color: rgb(205, 119, 27);
+    font-size: 15px;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    width: 80px;
+    justify-self: center;
+    font-weight: 700;
+    
+}
 
 .confirmationBox{
     position: fixed;
@@ -130,6 +144,13 @@ p{
     background-color: green;
     transition: .5s;
   }
+
+ .bottoms_update_delete{
+    display: grid;
+    grid-template-columns: max-content;
+    justify-content: center;
+ }
+
 
   @media (max-width: 450px){
     .loading_image{
