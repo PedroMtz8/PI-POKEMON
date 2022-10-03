@@ -24,7 +24,7 @@ export default function Update() {
         dispatch(getTypes())
         if (allPokemons.length === 0) return dispatch(getAllPokemons())
         dispatch(getDetails(id))
-    }, [dispatch, allPokemons.length])
+    }, [dispatch, allPokemons.length, id])
 
     const [types, setTypes] = useState(typesPoke)
 

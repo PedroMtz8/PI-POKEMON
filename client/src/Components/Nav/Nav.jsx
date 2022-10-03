@@ -100,7 +100,7 @@ export default function Nav({ setOrder, types}) {
 
                                     let mayus = t.name[0].toUpperCase()
                                     let Name = mayus + t.name.slice(1)
-                                    return <option className="options" value={Name} key={index} >{Name}</option>
+                                    return <option className="options" value={t.name} key={index} >{Name}</option>
                                 })
                              
                             }

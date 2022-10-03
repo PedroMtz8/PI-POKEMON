@@ -88,7 +88,7 @@ export default function rootReducer(state = initialState, action){
 
         case FILTER_BY_TYPE:
             let allPoke = [...state.allPokemons]
-            let filterType = allPoke.filter(pokeType => pokeType.types.map(t => t.name.toLowerCase()).includes(action.payload).toLowerCase())
+            let filterType = allPoke.filter(pokeType => pokeType.types.map(t => t.name).includes(action.payload))
             //console.log(filterType)
             let filterPokemons = action.payload === "all" ? allPoke : filterType
             if(!filterPokemons.length) {filterPokemons = [{msg: "There isn't pokemons"}]}
