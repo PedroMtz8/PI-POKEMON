@@ -23,7 +23,7 @@ export default function CardDetail() {
 
     const detail = useSelector(state => state.pokemonDetail)
     const allPokemons = useSelector(state => state.showPokemons)
-    console.log(detail)
+    //console.log(detail)
 
     /* let poke = useSelector(state => state.showPokemons)
    
