@@ -37,7 +37,7 @@
 
 @media (max-width: 450px){
     .background-home{
-        height: 3500px;
+        height: 3550px;
         background-image: linear-gradient(to bottom right, #00C0FF, #4218B8);
     }
     .pag-container2{
@@ -46,7 +46,7 @@
         position: absolute;
         right: 0;
         left: 0;
-        bottom: -2900px;
+        bottom: -2850px;
     }
 
     .pag-container{
