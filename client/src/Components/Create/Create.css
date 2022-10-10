@@ -90,7 +90,10 @@
     background-color: aqua;
 }
 
-
+.info{
+    right: 150px
+    
+}
 
 .type_buttom:hover{
     cursor: pointer;
@@ -178,6 +181,7 @@ span{
     .title_submit{
         display: flex;
         flex-direction: column;
+        text-align: center;
     }
 
     .conteiner_form{
@@ -188,5 +192,11 @@ span{
         margin-bottom: 40px;
     }
 
+    .info{
+        justify-self: center;
+        right: 10px;
+        font-size: 12px;
+
+    }
     
 }

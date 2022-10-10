@@ -34,7 +34,7 @@ pokemon.get("/:id", async (req, res) => {
     if (id) {
       const pokemonById = pokemons.filter(p => p.id === id)
 
-      pokemonById.length ? res.status(200).send(pokemonById) : res.send({ msg: "Error, doesn't exist, should enter a valid ID" })
+      pokemonById.length ? res.status(200).send(pokemonById) : res.send([{ msg: "This pokemon doesnt exist, should enter a valid ID" }])
     } else {
       res.send({ msg: "Should enter a valid ID" })
     }
@@ -129,7 +129,7 @@ pokemon.put('/update/:id', async (req, res) => {
 
 
     await oldPoke.update({
-      name,
+      name: name.toLowerCase(),
       life,
       attack,
       defense,

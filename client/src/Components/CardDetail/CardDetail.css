@@ -18,7 +18,7 @@
     justify-content: center;
 }
 
-button{
+.button_detail{
     background-color: rgb(49, 183, 183);
     border: 2px solid black;
     border-radius: 10px;
@@ -29,7 +29,7 @@ button{
     margin-bottom: 50px;
 }
 
-button:hover{
+.button_detail:hover{
     background-color: rgb(31, 72, 206);
     color: white;
     border: 2px solid rgb(29, 14, 14)
@@ -92,6 +92,7 @@ p{
     width: 80px;
     justify-self: center;
     font-weight: 700;
+    cursor: pointer;
     
 }
 
@@ -106,7 +107,7 @@ p{
     width: 80px;
     justify-self: center;
     font-weight: 700;
-    
+    cursor: pointer;
 }
 
 .confirmationBox{
@@ -129,19 +130,30 @@ p{
 .confirmBtn{
     font-size: 1.5rem;
     margin: 15px;
+    border: 2px solid black;
     border-radius: 10px;
-    
+    color: white;
+    padding: 10px 32px;
+    font-weight: 500;
     cursor: pointer;
     font-size: 14px;
   }
+
+  .denied{
+    background-color: rgb(132, 3, 3);
+  }
+
+  .confirmed{
+    background-color: green;
+  }
   
   .denied:hover{
-    background-color: red;
+    background-color: rgb(90, 14, 14);
     transition: .5s;
   }
   
   .confirmed:hover{
-    background-color: green;
+    background-color: rgb(8, 55, 8);
     transition: .5s;
   }
 

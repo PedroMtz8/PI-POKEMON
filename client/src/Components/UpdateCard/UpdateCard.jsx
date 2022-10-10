@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyPokemons, getTypes, updatePokemon, getAllPokemons, getDetails } from '../../redux/actions';
+import { showMessage } from "../../Toastify/toastify"
 
 
 
@@ -80,20 +81,20 @@ export default function Update() {
     function onSubmit(e) {
         validate()
         e.preventDefault()
-        if (!input.name || input.name.trim() === "" ) return alert("Can't create a Pokemon without a name")
-        if (!types.length) return alert("Choose at least one type")
-        if(input.name.length > 15) return alert("You can't add more than 15 characters")
+        if (!input.name || input.name.trim() === "" ) return showMessage("Can't create a Pokemon without a name")
+        if(input.name.length > 15) return showMessage("You can't add more than 15 characters")
         const differentsPokeName = allPokemons.filter(p => p.name !== filter[0].name)
         const nameExist = differentsPokeName.map(p => p.name).includes(input.name.toLowerCase())
-        if (nameExist) return alert("This pokemon already exists, you have to choose other name")
-        if (!input.height || !input.weight) return alert("You have to add all the requirments")
-        if(input.weight < 1 || input.height < 1) return alert("Just positive values")
-        if(input.weight.length > 3 || input.height.length > 3) return alert("The Height or Weight is out of range, just 3 numbers")
+        if (nameExist) return showMessage("This pokemon already exists, you have to choose other name")
+        if (!input.height || !input.weight) return showMessage("You have to add all the requirments")
+        if(input.weight < 1 || input.height < 1) return showMessage("Just positive values")
+        if (!types.length) return showMessage("Choose at least one type")
+        if(input.weight.length > 3 || input.height.length > 3) return showMessage("The Height or Weight is out of range, just 3 numbers")
         
 
         input.types = types
         dispatch(updatePokemon(input, id))
-        setTimeout(alert("Pokemon updated succesfully"), 2000)
+        setTimeout(showMessage("Pokemon updated succesfully", "success"), 2000)
         dispatch(emptyPokemons())
         setInput({
             name: "",

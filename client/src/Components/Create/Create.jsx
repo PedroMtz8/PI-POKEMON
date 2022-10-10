@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux';
 import { emptyPokemons, getTypes, postPokemon, getAllPokemons } from '../../redux/actions';
+import { showMessage } from '../../Toastify/toastify';
 import "./Create.css"
-
 
 
 export default function Create() {
@@ -71,19 +71,19 @@ export default function Create() {
     function onSubmit(e) {
         validate()
         e.preventDefault()
-        if (!input.name || input.name.trim() === "" ) return alert("Can't create a Pokemon without a name")
-        if (!types.length) return alert("Choose at least one type")
-        if(input.name.length > 15) return alert("You can't add more than 15 characters")
+        if (!input.name || input.name.trim() === "" ) return showMessage("Add a name")
+        if(input.name.length > 15) return showMessage("You can't add more than 15 characters")
         let nameExist = allPokemons.map(p => p.name).includes(input.name.toLowerCase())
-        if (nameExist) return alert("This pokemon already exists, you have to choose other name")
-        if (!input.height || !input.weight) return alert("You have to add all the requirments")
-        if(input.weight < 1 || input.height < 1) return alert("Just positive values")
-        if(input.weight.length > 3 || input.height.length > 3) return alert("The Height or Weight is out of range, just 3 numbers")
+        if (nameExist) return showMessage("This pokemon already exists, you have to choose other name")
+        if (!input.height || !input.weight) return showMessage("You have to add all the requirments")
+        if(input.weight < 1 || input.height < 1) return showMessage("Just positive values")
+        if(input.weight.length > 3 || input.height.length > 3) return showMessage("The Height or Weight is out of range, just 3 numbers")
+        if (!types.length) return showMessage("Choose at least one type")
         if (!input.image) input.image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/10099.png"
 
         input.types = types
         dispatch(postPokemon(input))
-        setTimeout(alert("Pokemon created succesfully"), 2000)
+        setTimeout(showMessage("Pokemon created succesfully", "success"), 2000)
         dispatch(emptyPokemons())
         setInput({
             name: "",

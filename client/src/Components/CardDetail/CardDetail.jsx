@@ -10,7 +10,8 @@ import speed from "../../img/speed.png"
 import height from "../../img/height.png"
 import weight from "../../img/weight.png"
 import loading from "../../img/loading_details.gif"
-
+import notFound from "../../img/notfound.gif"
+import { showMessage } from "../../Toastify/toastify"
 
 export default function CardDetail() {
 
@@ -22,7 +23,7 @@ export default function CardDetail() {
 
     const detail = useSelector(state => state.pokemonDetail)
     const allPokemons = useSelector(state => state.showPokemons)
-    //console.log(detail)
+    console.log(detail)
 
     /* let poke = useSelector(state => state.showPokemons)
    
@@ -49,6 +50,7 @@ export default function CardDetail() {
     function acceptDelete() {
         dispatch(deletePokemon(id))
         setConfirmbox(false)
+        showMessage("Pokemon deleted succesfully", "success")
         dispatch(emptyPokemons())
         navigate("/home")
         dispatch(setPage(1))
@@ -58,15 +60,18 @@ export default function CardDetail() {
         <div className="background_detail">
             <div className='container_detail'>
                 <div className='container_button'>
-                    <button onClick={() => navigate("/home")}>Home</button>
+                    <button className='button_detail' onClick={() => navigate("/home")}>Home</button>
                 </div>
                 <div >
                     {
-                        detail.length === 0 ?
-                            <div className='loading_text2'>
-                                <p>Loading...</p>
-                                <img className='loading_image' src={loading} alt="" />
-                            </div>
+                        detail.length ?
+                            detail[0].msg === "This pokemon doesnt exist, should enter a valid ID" ?
+                            
+                            <div className='loading_home'>
+                            <img className='loading_image' src={notFound} alt="pokemon" />
+                            <p className='loading_text'>This pokemon doesn't exists, please try another one</p>
+                        </div>
+                       
 
                             :
                             <div className="card_container">
@@ -107,7 +112,12 @@ export default function CardDetail() {
                                         :
                                         null
                                 }
-                            </div>
+                            </div> 
+                            :
+                            <div className='loading_text2'>
+                            <p>Loading...</p>
+                            <img className='loading_image' src={loading} alt="" />
+                        </div>
 
 
                     }
