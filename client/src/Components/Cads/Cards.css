@@ -8,7 +8,11 @@
 }
 
 
-@media (max-width: 450px){
+
+
+
+
+@media (min-width: 450px){
     .cards{
         display: wrap;
         grid-template-columns: repeat(1, 1fr);
