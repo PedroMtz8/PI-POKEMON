@@ -27,7 +27,7 @@ const sequelize = process.env.NODE_ENV === "production" ?
       ssl: true
     })
     :
-    new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`, {logging: false, native: false,})
+    new Sequelize(`postgresql://${{ PGUSER }}:${{ PGPASSWORD }}@${{ PGHOST }}:${{ PGPORT }}/pokemon`, {logging: false, native: false,})
 
 /* const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/pokemon`, {
   logging: false, // set to console.log to see the raw SQL queries
