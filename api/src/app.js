@@ -23,6 +23,10 @@ server.use((req, res, next) => {
   next();
 });
 
+server.get('/', (_, res) => {
+  return res.status(200).send('Hola!')
+})
+
 server.use('/', routes);
 
 // Error catching endware.
