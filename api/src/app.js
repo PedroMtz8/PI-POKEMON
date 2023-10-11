@@ -23,6 +23,11 @@ server.use((req, res, next) => {
   next();
 });
 
+server.use((req, res, next) => {
+  console.log('IP: ', req.ip)
+  next();
+})
+
 server.get('/', (_, res) => {
   return res.status(200).send('Hola!')
 })
